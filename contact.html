@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact | XO.Laboratories</title>
+<meta name="description" content="XO.Laboratories custom TCG accessories and collector pieces.">
+<style>
+
+:root{
+  --bg:#060608;
+  --panel:#101015;
+  --panel2:#15151d;
+  --text:#f8f5ff;
+  --muted:#b7b2c5;
+  --line:rgba(255,255,255,.10);
+  --gold:#d4af37;
+  --gold2:#f8df7a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,0,149,.08),transparent 28%),
+    radial-gradient(circle at 85% 10%,rgba(0,217,255,.08),transparent 28%),
+    #060608;
+  font-family:"Times New Roman",Times,serif;
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{text-decoration:none;color:inherit}
+button,input,select,textarea{font:inherit}
+img{max-width:100%;display:block}
+.container{width:min(1180px,calc(100% - 36px));margin:auto}
+.navbar{
+  position:sticky;top:0;z-index:100;
+  backdrop-filter:blur(18px);
+  background:rgba(6,6,8,.78);
+  border-bottom:1px solid var(--line)
+}
+.nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:22px}
+.logo{font-size:1.35rem;font-weight:700;letter-spacing:.04em}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:#e8e1ef;transition:.25s}
+.nav-links a:hover{color:#fff;text-shadow:0 0 14px currentColor}
+.menu-btn{display:none;background:#111;color:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-height:48px;padding:0 20px;border-radius:999px;
+  border:1px solid var(--line);cursor:pointer;
+  transition:.28s ease;font-weight:700
+}
+.btn-dark{background:#101015}
+.btn-gold{
+  color:#0a0a0c;
+  background:linear-gradient(90deg,#a97f16,#f3d76c,#b78a22);
+  border-color:rgba(255,221,112,.45);
+  box-shadow:0 0 24px rgba(212,175,55,.16)
+}
+.btn:hover{transform:translateY(-2px)}
+.page{padding:78px 0}
+.eyebrow{text-transform:uppercase;letter-spacing:.24em;font-size:.78rem;color:var(--gold2);font-weight:700}
+h1,h2,h3{line-height:1.03;margin:0 0 18px;font-weight:700}
+h1{font-size:clamp(3.7rem,8vw,7.7rem);letter-spacing:-.055em}
+h2{font-size:clamp(2.4rem,5vw,4.6rem);letter-spacing:-.04em}
+h3{font-size:1.5rem}
+p{color:var(--muted);margin:0 0 18px}
+
+.animated-rainbow{
+  background:linear-gradient(90deg,#ff4db8,#8b5cf6,#28d7ff,#5cffb2,#ffd84a,#ff6b6b,#ff4db8);
+  background-size:500% 100%;
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  animation:rainbowText 6s linear infinite
+}
+@keyframes rainbowText{
+  0%{background-position:0% 50%}
+  100%{background-position:500% 50%}
+}
+
+.section{padding:96px 0}
+.center{text-align:center}
+.center p{margin-left:auto;margin-right:auto;max-width:720px}
+.glow-band{
+  padding:38px;border-radius:28px;border:1px solid var(--line);
+  background:#101016;
+  animation:boxGlow 5s linear infinite
+}
+@keyframes boxGlow{
+  0%,100%{box-shadow:0 0 26px rgba(255,77,184,.22)}
+  25%{box-shadow:0 0 26px rgba(0,217,255,.22)}
+  50%{box-shadow:0 0 26px rgba(139,92,246,.22)}
+  75%{box-shadow:0 0 26px rgba(255,216,74,.22)}
+}
+.form-card{
+  border:1px solid var(--line);border-radius:28px;
+  padding:30px;background:#0e0e13;
+  animation:boxGlow 8s linear infinite
+}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-weight:700}
+input,select,textarea{
+  width:100%;padding:14px 15px;border-radius:14px;
+  border:1px solid var(--line);background:#121219;color:#fff;outline:none
+}
+input:focus,select:focus,textarea:focus{
+  border-color:#fff;
+  animation:boxGlow 3s linear infinite
+}
+textarea{min-height:150px;resize:vertical}
+.notice{display:none;margin-top:18px;padding:15px;border-radius:14px;border:1px solid var(--line);background:#111118}
+.footer{padding:42px 0;border-top:1px solid var(--line);margin-top:72px}
+.footer-inner{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;color:#b7b2c5}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s}
+.reveal.visible{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;left:0;right:0;top:76px;flex-direction:column;align-items:flex-start;padding:20px;background:#09090d;border-bottom:1px solid var(--line)}
+  .nav-links.open{display:flex}
+  .menu-btn{display:block}
+}
+@media(max-width:620px){
+  h1{font-size:3.2rem}
+  .form-grid{grid-template-columns:1fr}
+  .field.full{grid-column:auto}
+  .section{padding:72px 0}
+}
+
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="container nav-inner">
+    <a class="logo" href="index.html">XO.<span>Laboratories</span></a>
+    <button class="menu-btn" aria-label="Menu">Menu</button>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="shows-events.html">Shows & Events</a>
+      <a href="our-story.html">Our Story</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+
+<main class="page">
+<section class="container center reveal">
+  <div class="eyebrow">Contact</div>
+  <h1 class="animated-rainbow">Let’s connect.</h1>
+  <p>Have a question, want to talk about a product, or want to work with XO.Laboratories? Send a message below.</p>
+</section>
+<section class="section" style="padding-top:30px">
+  <div class="container" style="max-width:900px">
+    <form class="form-card reveal" data-demo-form>
+      <div class="form-grid">
+        <div class="field"><label>First Name</label><input required placeholder="First name"></div>
+        <div class="field"><label>Last Name</label><input required placeholder="Last name"></div>
+        <div class="field"><label>Email</label><input type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label>Phone Number</label><input type="tel" placeholder="(000) 000-0000"></div>
+        <div class="field full"><label>Subject</label><input required placeholder="What would you like to talk about?"></div>
+        <div class="field full"><label>Message</label><textarea required placeholder="Tell us more..."></textarea></div>
+        <div class="field full"><button class="btn btn-gold" type="submit">Send Message</button></div>
+      </div>
+      <div class="notice">Thanks. Your message has been captured in this demo form. Connect the form to your preferred backend before launch.</div>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container glow-band center reveal">
+    <div class="eyebrow">Looking for something one of one?</div>
+    <h2 class="animated-rainbow">Start a custom order.</h2>
+    <p>Use the dedicated custom order form to tell us the TCG, product type, design direction, budget and timeline.</p>
+    <a class="btn btn-gold" href="custom-orders.html">Go to Custom Orders</a>
+  </div>
+</section>
+</main>
+
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div><div class="logo">XO.<span>Laboratories</span></div><p>Built for collectors. Made with intention.</p></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="shop.html">Shop</a><a href="shows-events.html">Events</a>
+      <a href="our-story.html">Our Story</a><a href="contact.html">Contact</a><a href="custom-orders.html">Custom Orders</a>
+    </div>
+    <div style="width:100%;color:#746f7f">© 2026 XO.Laboratories. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+
+const menuBtn=document.querySelector(".menu-btn");
+const navLinks=document.querySelector(".nav-links");
+if(menuBtn&&navLinks){menuBtn.addEventListener("click",()=>navLinks.classList.toggle("open"))}
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add("visible")})
+},{threshold:.12});
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+document.querySelectorAll("form[data-demo-form]").forEach(form=>{
+  form.addEventListener("submit",e=>{
+    e.preventDefault();
+    const n=form.querySelector(".notice");
+    if(n)n.style.display="block";
+    form.reset();
+  });
+});
+
+</script>
+<elevenlabs-convai agent-id="agent_7101ky18dem6ew3b43w6w7cb1mry"></elevenlabs-convai>
+<script src="https://unpkg.com/@elevenlabs/convai-widget-embed" async type="text/javascript"></script>
+</body>
+</html>
